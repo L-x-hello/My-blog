@@ -1,0 +1,10 @@
+baseURL = "https://example.pages.dev/"
+languageCode = "zh-cn"
+title = "First blog"
+theme = "PaperMod"
+
+[params]
+  defaultTheme = "auto"
+  ShowReadingTime = true
+  ShowShareButtons = true
+  ShowPostNavLinks = true
