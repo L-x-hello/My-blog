@@ -1,52 +1,99 @@
-baseURL = "https://d926a009.my-blog-8z8.pages.dev/"
+baseURL = "https://my-blog-8z8.pages.dev/"
 languageCode = "zh-cn"
-title = "First blog"
+defaultContentLanguage = "zh"
+title = "LJX-ZAX"
 theme = "PaperMod"
 
-# 中文站建议加上（对字数统计/阅读时间更合理）
+[pagination]
+  pagerSize = 10
+
+
+enableRobotsTXT = true
 hasCJKLanguage = true
-defaultContentLanguage = "zh"
-defaultContentLanguageInSubdir = false
 
-# 构建相关（Cloudflare 上更稳）
-buildDrafts = false
-buildFuture = false
-buildExpired = false
-
-# PaperMod / Hugo 输出（一般保持）
+# 生成搜索用的 index（PaperMod 的内置搜索需要这个）
 [outputs]
-  home = ["HTML", "RSS", "JSON"]
+home = ["HTML", "RSS", "JSON"]
+
+[taxonomies]
+tag = "tags"
+category = "categories"
 
 [params]
-  defaultTheme = "auto"      # auto/dark/light
-  ShowReadingTime = true
-  ShowShareButtons = true
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowToc = true
-  TocOpen = false
-  comments = false
+env = "production"
+title = "LJX-ZAX"
+description = "武汉光谷 | AI账表自动化 | 创业与学习记录"
+keywords = ["AI", "自动化", "对账", "Excel", "财务", "创业", "Hugo", "PaperMod"]
+author = "LJX-ZAX"
+DateFormat = "2006-01-02"
 
-  # ⚠️ 关键：不要再用 Social = [...]
-  # PaperMod 标准写法是 socialIcons（这样也避免你之前因为 .Site.Social 引发的兼容问题）
-  socialIcons = [
-    { name = "github", url = "https://github.com/L-x-hello" }
-  ]
+defaultTheme = "auto"     # auto / dark / light
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowToc = true
+TocOpen = false
 
+disableSpecial1stPost = false
+hideSummary = false
+
+# 主页个人介绍模式（更好看）
 [params.profileMode]
-  enabled = true
-  title = "L.x"
-  subtitle = "记录 · 思考 · 创业 · 技术"
-  imageUrl = ""
-  imageTitle = "avatar"
-  imageWidth = 120
-  imageHeight = 120
+enabled = true
+title = "LJX-ZAX"
+subtitle = "武汉光谷 · 计算机大一 · AI账表/对账自动化 · 创业实践"
+# 你可以后续放头像：static/images/avatar.jpg
+# imageUrl = "images/avatar.jpg"
+# imageWidth = 120
+# imageHeight = 120
+# imageTitle = "avatar"
 
-  [[params.profileMode.buttons]]
-    name = "文章"
-    url = "/posts/"
+[[params.profileMode.buttons]]
+name = "文章"
+url = "/posts/"
 
-  [[params.profileMode.buttons]]
-    name = "标签"
-    url = "/tags/"
+[[params.profileMode.buttons]]
+name = "标签"
+url = "/tags/"
+
+[[params.profileMode.buttons]]
+name = "关于"
+url = "/about/"
+
+# 社交链接（想显示就配）
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/L-x-hello"
+
+# 顶部菜单
+[[menu.main]]
+name = "文章"
+url = "/posts/"
+weight = 10
+
+[[menu.main]]
+name = "标签"
+url = "/tags/"
+weight = 20
+
+[[menu.main]]
+name = "分类"
+url = "/categories/"
+weight = 30
+
+[[menu.main]]
+name = "搜索"
+url = "/search/"
+weight = 40
+
+[[menu.main]]
+name = "归档"
+url = "/archives/"
+weight = 50
+
+[[menu.main]]
+name = "关于"
+url = "/about/"
+weight = 60
