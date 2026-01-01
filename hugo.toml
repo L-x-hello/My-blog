@@ -4,10 +4,33 @@ title = "First blog"
 theme = "PaperMod"
 
 [params]
-  defaultTheme = "auto"
+  defaultTheme = "auto"   # auto/dark/light
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowToc = true
+  TocOpen = false
+  comments = false
   Social = [
     { name = "github", url = "https://github.com/L-x-hello" }
   ]
+
+  
+[params.profileMode]
+  enabled = true
+  title = "L.x"
+  subtitle = "记录 · 思考 · 创业 · 技术"
+  imageUrl = ""
+  imageTitle = "avatar"
+  imageWidth = 120
+  imageHeight = 120
+
+  [[params.profileMode.buttons]]
+    name = "文章"
+    url = "/posts/"
+
+  [[params.profileMode.buttons]]
+    name = "标签"
+    url = "/tags/"
