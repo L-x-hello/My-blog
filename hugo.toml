@@ -1,10 +1,24 @@
-baseURL = "https://example.pages.dev/"
+baseURL = "https://d926a009.my-blog-8z8.pages.dev/"
 languageCode = "zh-cn"
 title = "First blog"
 theme = "PaperMod"
 
+# 中文站建议加上（对字数统计/阅读时间更合理）
+hasCJKLanguage = true
+defaultContentLanguage = "zh"
+defaultContentLanguageInSubdir = false
+
+# 构建相关（Cloudflare 上更稳）
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+# PaperMod / Hugo 输出（一般保持）
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [params]
-  defaultTheme = "auto"   # auto/dark/light
+  defaultTheme = "auto"      # auto/dark/light
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
@@ -13,11 +27,13 @@ theme = "PaperMod"
   ShowToc = true
   TocOpen = false
   comments = false
-  Social = [
+
+  # ⚠️ 关键：不要再用 Social = [...]
+  # PaperMod 标准写法是 socialIcons（这样也避免你之前因为 .Site.Social 引发的兼容问题）
+  socialIcons = [
     { name = "github", url = "https://github.com/L-x-hello" }
   ]
 
-  
 [params.profileMode]
   enabled = true
   title = "L.x"
