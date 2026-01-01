@@ -8,3 +8,6 @@ theme = "PaperMod"
   ShowReadingTime = true
   ShowShareButtons = true
   ShowPostNavLinks = true
+  Social = [
+    { name = "github", url = "https://github.com/L-x-hello" }
+  ]
