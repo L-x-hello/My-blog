@@ -4,7 +4,8 @@
   background: #f2f2f2; /* 浅灰色占位 */
   overflow: hidden;
 }
-.entry-cover img {
+.entry-cover img,
+.entry-cover-img {
   display: block;
   width: 100%;
   height: auto;
@@ -12,6 +13,7 @@
   transition: opacity 0.6s ease;
   background: #f2f2f2; /* 占位色，兼容部分浏览器 */
 }
-.entry-cover img.loaded {
+.entry-cover img.loaded,
+.entry-cover-img.loaded {
   opacity: 1;
 }
