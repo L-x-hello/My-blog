@@ -1,0 +1,22 @@
+/* 右侧悬浮目录（PaperMod TOC） */
+@media (min-width: 1100px) {
+  /* PaperMod 的 TOC 外层一般是 .toc */
+  .toc {
+    position: fixed;
+    right: 24px;
+    top: 120px;
+    width: 280px;
+    max-height: calc(100vh - 160px);
+    overflow: auto;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--theme);
+    z-index: 999;
+  }
+
+  /* 避免正文被悬浮目录遮挡：给正文留出右侧空间 */
+  .post-content, .post-single {
+    padding-right: 320px;
+  }
+}
