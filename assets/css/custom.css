@@ -18,64 +18,47 @@
   opacity: 1;
 }
 
-/* 目录悬浮与联动定位 */
+/* 目录悬浮与联动定位（升级版） */
 .toc {
-  position: sticky;
-  top: 100px;
-  right: 2vw;
-  max-width: 320px;
-  margin-left: auto;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  padding: 12px 16px;
+  position: fixed;
+  top: 20vh; /* 可自定义悬浮顶部距离 */
+  right: 3vw;
+  width: 320px;
   max-height: 70vh;
   overflow: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px 20px;
   z-index: 100;
   transition: box-shadow 0.2s;
 }
-.toc .inner ul {
-  margin: 0;
-  padding-left: 1em;
-  list-style: none;
-}
-.toc .inner li {
-  margin: 0.2em 0;
-}
-.toc .inner a {
-  color: #666;
-  text-decoration: none;
-  padding: 2px 4px;
-  border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
-  font-size: 15px;
-}
-.toc .inner a.active {
-  color: #1976d2;
-  background: #e3f2fd;
-  font-weight: bold;
-}
-.toc .inner li ul a {
-  font-size: 14px;
-  padding-left: 18px;
-}
-.toc .inner li ul {
-  margin-left: 0.5em;
-  border-left: 2px solid #f0f0f0;
-}
+.toc .inner ul { margin: 0; padding-left: 1em; list-style: none; }
+.toc .inner li { margin: 0.2em 0; }
+.toc .inner a { color: #666; text-decoration: none; padding: 2px 4px; border-radius: 4px; transition: background 0.2s, color 0.2s; font-size: 15px; }
+.toc .inner a.active { color: #1976d2; background: #e3f2fd; font-weight: bold; }
+.toc .inner li ul a { font-size: 14px; padding-left: 18px; }
+.toc .inner li ul { margin-left: 0.5em; border-left: 2px solid #f0f0f0; }
+.toc .inner li > a { font-weight: 600; }
+.toc .inner li ul > li > a { font-weight: 400; }
+.toc[hidden], .toc:empty { display: none !important; }
+
+/* 移动端适配 */
 @media (max-width: 900px) {
   .toc {
     position: static;
-    max-width: 100%;
+    width: 100%;
+    max-width: 100vw;
     box-shadow: none;
     border-radius: 0;
     padding: 0;
     background: none;
     max-height: none;
     margin: 0;
+    display: none;
   }
-  .toc details {
-    width: 100%;
+  .toc.toc-mobile {
+    display: block;
   }
   .toc .inner {
     display: none;
@@ -90,15 +73,23 @@
   .toc.toc-mobile.open .inner {
     display: block;
   }
-  .toc .details {
-    font-size: 16px;
+  .toc .details { font-size: 16px; font-weight: bold; color: #1976d2; cursor: pointer; }
+  .toc-btn {
+    display: block;
+    width: 90px;
+    margin: 12px auto 0 auto;
+    padding: 8px 0;
+    background: #1976d2;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
     font-weight: bold;
-    color: #1976d2;
+    box-shadow: 0 2px 8px rgba(25,118,210,0.08);
     cursor: pointer;
+    transition: background 0.2s;
   }
-}
-.toc[hidden], .toc:empty {
-  display: none !important;
+  .toc-btn:active { background: #0d47a1; }
 }
 
 /* 时间轴页面样式 */
@@ -183,6 +174,7 @@
   font-size: 0.92em;
   margin-right: 4px;
 }
+
 @media (max-width: 600px) {
   .timeline-wrapper { padding: 12px 2vw; }
   .timeline-title { font-size: 1.4em; }
