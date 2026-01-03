@@ -155,3 +155,75 @@
 {{- template "partials/templates/twitter_cards.html" . }}
 {{- template "partials/templates/schema_json.html" . }}
 {{- end -}}
+<script>
+(function() {
+  var toc = document.querySelector('.toc');
+  if (!toc) return;
+  var tocInner = toc.querySelector('.inner');
+  var links = tocInner ? tocInner.querySelectorAll('a[href^="#"]') : [];
+  if (!links.length) return;
+
+  // PC/移动端切换
+  function handleTocPosition() {
+    if (window.innerWidth < 900) {
+      toc.classList.add('toc-mobile');
+    } else {
+      toc.classList.remove('toc-mobile');
+      toc.classList.remove('open');
+    }
+  }
+  window.addEventListener('resize', handleTocPosition);
+  handleTocPosition();
+
+  // 移动端目录按钮
+  if (!document.querySelector('.toc-btn') && toc.classList.contains('toc-mobile')) {
+    var btn = document.createElement('button');
+    btn.className = 'toc-btn';
+    btn.innerText = '目录';
+    btn.onclick = function() { toc.classList.toggle('open'); };
+    toc.parentNode.insertBefore(btn, toc);
+  }
+
+  // 平滑滚动
+  links.forEach(function(link) {
+    link.addEventListener('click', function(e) {
+      var target = document.getElementById(decodeURIComponent(link.hash.slice(1)));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (toc.classList.contains('toc-mobile')) toc.classList.remove('open');
+      }
+    });
+  });
+
+  // 节流滚动监听
+  var ticking = false;
+  var headingSelector = 'h2[id],h3[id]';
+  var headings = Array.prototype.slice.call(document.querySelectorAll(headingSelector));
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() {
+      var scrollPos = window.scrollY || window.pageYOffset;
+      var offset = 80;
+      var activeIndex = -1;
+      for (var i = 0; i < headings.length; i++) {
+        if (headings[i].getBoundingClientRect().top + window.scrollY - offset <= scrollPos) {
+          activeIndex = i;
+        } else {
+          break;
+        }
+      }
+      links.forEach(function(link) { link.classList.remove('active'); });
+      if (activeIndex >= 0) {
+        var id = headings[activeIndex].id;
+        var activeLink = tocInner.querySelector('a[href="#' + CSS.escape(id) + '"]');
+        if (activeLink) activeLink.classList.add('active');
+      }
+      ticking = false;
+    });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
+</script>

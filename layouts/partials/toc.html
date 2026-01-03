@@ -2,7 +2,6 @@
 {{- $has_headers := ge (len $headers) 1 -}}
 {{- if $has_headers -}}
 <div class="toc">
-    <script defer src="{{ "js/toc-float.js" | relURL }}"></script>
     <details {{if (.Param "TocOpen") }} open{{ end }}>
         <summary accesskey="c" title="(Alt + C)">
             <span class="details">{{- i18n "toc" | default "Table of Contents" }}</span>
