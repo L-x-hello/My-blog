@@ -1,7 +1,7 @@
 baseURL = "https://my-blog-8z8.pages.dev/"
 languageCode = "zh-cn"
 defaultContentLanguage = "zh"
-title = "LJX-ZAX"
+title = "LJX-ZAX's Blog"
 theme = "PaperMod"
 
 [pagination]
@@ -20,9 +20,8 @@ tag = "tags"
 category = "categories"
 
 [params]
-env = "production"
-title = "LJX-ZAX"
-description = "武汉光谷 | AI账表自动化 | 创业与学习记录"
+title = "LJX-ZAX's Blog"
+description = "“认识你自己”"
 keywords = ["AI", "自动化", "对账", "Excel", "财务", "创业", "Hugo", "PaperMod"]
 author = "LJX-ZAX"
 DateFormat = "2006-01-02"
@@ -43,12 +42,12 @@ hideSummary = false
 [params.profileMode]
 enabled = true
 title = "LJX-ZAX"
-subtitle = "武汉光谷 · 计算机大一 · AI账表/对账自动化 · 创业实践"
+subtitle = "认识你自己"
 # 你可以后续放头像：static/images/avatar.jpg
-# imageUrl = "images/avatar.jpg"
-# imageWidth = 120
-# imageHeight = 120
-# imageTitle = "avatar"
+imageUrl = "images/avatar.jpg"
+imageWidth = 120
+imageHeight = 120
+imageTitle = "avatar"
 
 [[params.profileMode.buttons]]
 name = "文章"
