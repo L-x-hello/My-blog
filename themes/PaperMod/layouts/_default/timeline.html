@@ -1,0 +1,36 @@
+{{ define "main" }}
+<main class="timeline-wrapper">
+  <h1 class="timeline-title">时间轴</h1>
+  {{ $posts := where .Site.RegularPages "Type" "in" (slice "post" "posts") }}
+  {{ $sorted := sort $posts "Date" "desc" }}
+  {{ $currentYear := "" }}
+  {{ $currentMonth := "" }}
+  <div class="timeline-list">
+    {{ range $i, $p := $sorted }}
+      {{ $year := $p.Date.Format "2006" }}
+      {{ $month := $p.Date.Format "01" }}
+      {{ if or (ne $year $currentYear) (ne $month $currentMonth) }}
+        {{ if ne $i 0 }}</div>{{ end }}
+        <div class="timeline-group">
+          <div class="timeline-date">{{ $year }} 年 {{ $month }} 月</div>
+        {{ $currentYear = $year }}
+        {{ $currentMonth = $month }}
+      {{ end }}
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <a class="timeline-post-title" href="{{ $p.RelPermalink }}">{{ $p.Title }}</a>
+          <div class="timeline-meta">
+            <span class="timeline-post-date">{{ $p.Date.Format "2006-01-02" }}</span>
+            {{ with $p.Params.tags }}
+              <span class="timeline-tags">
+                {{ range . }}<span class="timeline-tag">{{ . }}</span>{{ end }}
+              </span>
+            {{ end }}
+          </div>
+        </div>
+      </div>
+    {{ end }}
+    </div>
+</main>
+{{ end }}

@@ -93,6 +93,11 @@ url = "/archives/"
 weight = 50
 
 [[menu.main]]
+name = "时间轴"
+url = "/timeline/"
+weight = 55
+
+[[menu.main]]
 name = "关于"
 url = "/about/"
 weight = 60
